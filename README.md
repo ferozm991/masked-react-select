@@ -32,38 +32,51 @@ yarn add masked-react-select
 ## 🚀 Usage
 
 ```jsx
-import React from "react";
+import "./styles.css";
+import { useState, useEffect } from "react";
 import MaskedReactSelect from "masked-react-select";
 
-const options = [
-  { label: "India (+91)", value: "+91" },
-  { label: "USA (+1)", value: "+1" }
-];
+export default function App() {
+  const [options, setOptions] = useState([]);
+  const [selected, setSelected] = useState(null);
 
-function App() {
+  const handleCreateOption = (option) => {
+    setOptions((prev) => [...prev, { label: option, value: option }]);
+  };
+
+  useEffect(() => {
+    setSelected(options[options.length - 1]);
+  }, [options]);
+
   return (
-    <MaskedReactSelect
-      options={options}
-      mask="+99 99999 99999"
-      placeholder="Enter phone number"
-    />
+    <div className="App">
+      <MaskedReactSelect
+        options={options}
+        mask="+1 ___ ___ ____"
+        replacement={{ _: /\d/ }}
+        placeholder="+1 123 555 0123"
+        onCreateOption={handleCreateOption}
+        onChange={(option) => setSelected(option)}
+        value={selected}
+      />
+    </div>
   );
 }
-
-export default App;
 ```
 
 ---
 
 ## 🧠 Props
 
-| Prop          | Type     | Description                           |
-| ------------- | -------- | ------------------------------------- |
-| `options`     | Array    | Select options                        |
-| `mask`        | String   | Mask pattern (e.g. `+99 99999 99999`) |
-| `placeholder` | String   | Input placeholder                     |
-| `onChange`    | Function | Callback when value changes           |
-| `value`       | Any      | Controlled value                      |
+| Prop             | Type        | Description                                                |
+| ---------------- | ----------- | ---------------------------------------------------------- |
+| `options`        | Array       | List of selectable options (`{ label, value }`)            |
+| `mask`           | String      | Mask pattern (e.g. `+1 ___ ___ ____`)                      |
+| `replacement`    | Object      | Defines mask rules (e.g. `{ _: /\d/ }` allows digits only) |
+| `placeholder`    | String      | Input placeholder text                                     |
+| `onCreateOption` | Function    | Callback when user creates a new option                    |
+| `onChange`       | Function    | Triggered when selected value changes                      |
+| `value`          | Object/null | Controlled selected value                                  |
 
 ---
 
