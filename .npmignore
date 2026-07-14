@@ -1,0 +1,12 @@
+    # .npmignore
+    src/
+    node_modules/
+    example/
+    .git
+    .vite
+    .vscode
+    .eslintrc.json
+    .prettierrc.json
+    .prettierignore
+    .prettierignore
+    *.log

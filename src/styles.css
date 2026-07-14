@@ -1,0 +1,31 @@
+.masked-react-select-control {
+  min-height: 44px;
+  border-color: #d1d5db; /* gray-300 */
+  border-width: 1px;
+  border-style: solid;
+}
+
+.masked-react-select-control:focus-within {
+  border-color: #6366f1; /* indigo-500 */
+  box-shadow: 0 0 0 2px #c7d2fe; /* indigo-200 ring */
+}
+
+.masked-react-select-error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.25rem;
+}
+
+.masked-react-select-input {
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  margin-left: 0.5rem;
+  position: static;
+  border: none;
+}
+
+.masked-react-select-input--placeholder {
+  position: absolute;
+}
