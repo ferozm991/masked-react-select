@@ -11,17 +11,36 @@
   },
   "types": "dist/MaskedReactSelect.d.ts",
   "files": [
-    "dist","README.md","LICENSE"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "npx rollup -c",
-    "watch": "npx rollup -c -w"
+    "watch": "npx rollup -c -w",
+    "bump:patch": "npm version patch",
+    "bump:minor": "npm version minor",
+    "bump:major": "npm version major",
+    "bump:patch:nogit": "npm version patch --no-git-tag-version",
+    "bump:minor:nogit": "npm version minor --no-git-tag-version",
+    "bump:major:nogit": "npm version major --no-git-tag-version",
+    "version": "npm run build",
+    "prepublishOnly": "npm run build",
+    "publish:npm": "npm publish"
   },
   "type": "module",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Feroz Mujawar",
+  "license": "MIT",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferozm991/masked-react-select.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ferozm991/masked-react-select/issues"
+  },
+  "homepage": "https://github.com/ferozm991/masked-react-select#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
